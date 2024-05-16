@@ -1,3 +1,5 @@
+import sys
+
 from Utilitaires import *
 
 
@@ -8,7 +10,7 @@ class ListeEleve:
         self.annee = annee
 
     @staticmethod
-    def initialiser_liste(self, annee):
+    def initialiser_liste(annee):
         return ListeEleve(annee)
 
     def tailleListe(self):
@@ -19,11 +21,13 @@ class ListeEleve:
             maillon_actuel = maillon_actuel.suivant
         return count
 
-    @staticmethod
     def listeVide(self):
-        return self.tete is None and self.fin is None
+        if self.tailleListe() > 0:
+            return 'liste non vide'
+        else:
+            return 'liste vide'
 
 
 def listeEleve(annee):
     liste = ListeEleve(annee)
-    return liste.tailleListe(), liste.listeVide()
+    return liste.listeVide() + ' : ' + str(liste.tailleListe())
